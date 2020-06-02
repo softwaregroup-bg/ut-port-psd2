@@ -4,7 +4,7 @@ const Hapi = require('@hapi/hapi');
 const hrtime = require('browser-process-hrtime');
 const uuid = require('uuid');
 const crypto = require('crypto');
-const utCrypt = require('ut-crypt');
+const utCrypt = require('ut-function.cbc');
 const fs = require('fs');
 const querystring = require('querystring');
 const cacheMap = fs.existsSync('cache.json') ? JSON.parse(fs.readFileSync('cache.json')) : {};
@@ -372,7 +372,7 @@ module.exports = ({utPort, registerErrors, utMethod}) => class Psd2Port extends 
         const result = await super.init(...arguments);
         this.profiles = require(this.config.path + '/profiles');
         if (!this.config.key) throw new Error(`Missing configuration ${this.config.id}.key`);
-        this.cbc = utCrypt.prototype.cbc(this.config.key);
+        this.cbc = utCrypt(this.config.key, true);
         this.httpServer = new Hapi.Server(this.config.server);
         if (this.config.capture) {
             await this.httpServer.register({

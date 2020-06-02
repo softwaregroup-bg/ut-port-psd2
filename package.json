@@ -21,8 +21,8 @@
     "browser-process-hrtime": "1.0.0",
     "@hapi/hapi": "18.4.0",
     "request": "2.88.0",
-    "ut-crypt": "^6.0.3",
     "openapi-client-axios": "3.2.1",
+    "ut-function.cbc": "^1.1.4",
     "uuid": "3.3.2"
   },
   "scripts": {
