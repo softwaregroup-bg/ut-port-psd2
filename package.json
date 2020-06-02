@@ -1,10 +1,9 @@
 {
   "name": "ut-port-psd2",
-  "version": "7.0.0",
+  "version": "7.1.0",
   "description": "PSD2 port",
   "main": "index.js",
-  "peerDependencies": {
-  },
+  "peerDependencies": {},
   "devDependencies": {
     "tap": "^12.5.2",
     "ut-bus": "^7.4.0",
