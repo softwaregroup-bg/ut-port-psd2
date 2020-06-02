@@ -1,0 +1,54 @@
+{
+  "name": "ut-port-psd2",
+  "version": "7.0.0",
+  "description": "PSD2 port",
+  "main": "index.js",
+  "peerDependencies": {
+  },
+  "devDependencies": {
+    "tap": "^12.5.2",
+    "ut-bus": "^7.4.0",
+    "ut-browser-request": "^1.0.2",
+    "ut-function.capture-hapi": "^1.1.0",
+    "ut-function.capture-request": "^1.1.0",
+    "ut-port": "^6.12.3",
+    "ut-tools": "^6.8.10"
+  },
+  "browser": {
+    "request": "ut-browser-request"
+  },
+  "dependencies": {
+    "browser-process-hrtime": "1.0.0",
+    "hapi": "17.6.0",
+    "request": "2.88.0",
+    "ut-crypt": "^6.0.3",
+    "openapi-client-axios": "3.2.1",
+    "uuid": "3.3.2"
+  },
+  "scripts": {
+    "lint": "ut-lint .",
+    "test": "ut-test-parallel",
+    "changelog": "ut-changelog",
+    "check": "ut-check",
+    "cover": "ut-cover-parallel",
+    "lint-js": "ut-lint-js .",
+    "postpublish": "ut-postpublish",
+    "postversion": "ut-postversion",
+    "precommit": "ut-precommit",
+    "prepublish": "ut-prepublish",
+    "prepush": "ut-prepush",
+    "pretest": "ut-pretest",
+    "precover": "ut-precover",
+    "preversion": "ut-preversion",
+    "release": "ut-release",
+    "version": "ut-version",
+    "jenkins": "ut-jenkins",
+    "gitlab": "ut-gitlab"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:softwaregroup-bg/ut-port-psd2.git"
+  },
+  "author": "",
+  "license": "Apache-2.0"
+}
