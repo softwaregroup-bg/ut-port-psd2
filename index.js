@@ -61,7 +61,7 @@ module.exports = ({utPort, registerErrors, utMethod}) => class Psd2Port extends 
         const [profileName, ...parts] = $meta.method.split('.');
         const method = this.findHandler(parts.join('.'));
         if (method) {
-            return method.call(this, {profileName, profile: this.config.profiles[profileName], ...msg}, $meta);
+            return method.call(this, {profileName, profile: this.profiles[profileName], ...msg}, $meta);
         } else {
             return this.sendRequest(msg && {
                 params: msg.params || msg,
@@ -89,7 +89,7 @@ module.exports = ({utPort, registerErrors, utMethod}) => class Psd2Port extends 
 
     async sendRequest({profile, method, path, idHeader = 'X-Request-ID', keyId, params, body, form, headers = {}}, $meta) {
         const profileName = $meta && $meta.method && $meta.method.split('.')[0];
-        profile = profile || this.config.profiles[profileName];
+        profile = profile || this.profiles[profileName];
         keyId = keyId || profile.keyId;
         let url;
         const id = uuid.v4();
@@ -370,6 +370,7 @@ module.exports = ({utPort, registerErrors, utMethod}) => class Psd2Port extends 
 
     async init() {
         const result = await super.init(...arguments);
+        this.profiles = require(this.config.path + '/profiles');
         if (!this.config.key) throw new Error(`Missing configuration ${this.config.id}.key`);
         this.cbc = utCrypt.prototype.cbc(this.config.key);
         this.httpServer = new Hapi.Server(this.config.server);
@@ -404,7 +405,7 @@ module.exports = ({utPort, registerErrors, utMethod}) => class Psd2Port extends 
                     }
                 } else {
                     const params = this.decrypt(request.query.state);
-                    const profile = this.config.profiles[params.pfl];
+                    const profile = this.profiles[params.pfl];
                     switch (params.typ) {
                         case 'authz':
                             await this.tokenFromAuthorization(profile, {
