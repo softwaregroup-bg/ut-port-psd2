@@ -1,6 +1,6 @@
 /* eslint no-console: 0 */
 const request = (process.type === 'renderer') ? require('ut-browser-request') : require('request');
-const Hapi = require('hapi');
+const Hapi = require('@hapi/hapi');
 const hrtime = require('browser-process-hrtime');
 const uuid = require('uuid');
 const crypto = require('crypto');

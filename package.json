@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "browser-process-hrtime": "1.0.0",
-    "hapi": "17.6.0",
+    "@hapi/hapi": "18.4.0",
     "request": "2.88.0",
     "ut-crypt": "^6.0.3",
     "openapi-client-axios": "3.2.1",
